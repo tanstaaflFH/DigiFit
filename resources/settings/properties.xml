@@ -1,0 +1,20 @@
+<properties>
+
+    <property id="BackgroundColor" type="number">0x000000</property>
+    <property id="ForegroundColor" type="number">0xFFFFFF</property>
+    <property id="UseMilitaryFormat" type="boolean">false</property>
+    
+    <property id="StatVis1_x" type="number">80</property>
+    <property id="StatVis1_y" type="number">175</property>
+    <property id="StatVis1_form" type="string">arc</property>
+    <property id="StatVis1_diameter" type="number">30</property>
+    <property id="StatVis1_color" type="number">0xFF0000</property>
+    
+    <property id="StatVis2_x" type="number">0</property>
+    <property id="StatVis2_y" type="number">110</property>
+    <property id="StatVis2_form" type="string">bar</property>
+    <property id="StatVis2_width" type="number">240</property>
+    <property id="StatVis2_height" type="number">20</property>
+    <property id="StatVis2_color" type="number">0x00FF00</property>
+
+</properties>
