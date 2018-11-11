@@ -52,6 +52,24 @@ class StatVisual {
 		
 	}
 	
+	hidden function calculatePercentage(value, goal) {
+	
+		var percent;
+	
+		if ( goal == null || goal == 0) {
+ 			percent = 1;
+		} else {
+			percent = ( (value*1.0) / (goal*1.0) );
+			if (percent > 1) {
+				percent = 1;
+			}
+			//System.println("calculation " + mValue + "/" + mGoal + "=" + mPercent);
+  		}
+  		
+  		return percent;
+	
+	}
+	
 	function updateStat() {
 	
 	   	var info = ActivityMonitor.getInfo();
@@ -61,16 +79,8 @@ class StatVisual {
     		case Enum.TYPE_STEPS: {
     			mValue = info.steps * 1.0;
     			mGoal = info.stepGoal * 1.0;
-    			if ( mGoal == null || mGoal == 0) {
-     				mPercent = 1;
-    			} else {
-    				mPercent = ( mValue / mGoal );
-    				if (mPercent > 1) {
-    					mPercent = 1;
-    				}
-    				//System.println("calculation " + mValue + "/" + mGoal + "=" + mPercent);
-      			}
-    			//System.println("Steps: " + mValue + "/" + mGoal + "/" + mPercent);
+    			mPercent = calculatePercentage(mValue, mGoal);
+	   			//System.println("Steps: " + mValue + "/" + mGoal + "/" + mPercent);
     			mString = mValue.format("%d");
     			break;
     		}
@@ -78,42 +88,33 @@ class StatVisual {
      		case Enum.TYPE_DISTANCE: {
     			mValue = info.distance * 1.0;
     			mGoal = 100000.0;
-    			if ( mGoal == null || mGoal == 0) {
-     				mPercent = 1;
-    			} else {
-    				mPercent = ( mValue / mGoal );
-    				if (mPercent > 1) {
-    					mPercent = 1;
-    				}
-    				//System.println("calculation " + mValue + "/" + mGoal + "=" + mPercent);
-      			}
+    			mPercent = calculatePercentage(mValue, mGoal);
     			//System.println("Steps: " + mValue + "/" + mGoal + "/" + mPercent);
-    			mString = ( mValue / 100000 ).format("%.2f") + "k";
+    			mString = ( mValue / 100000 ).format("%.2f") + "km";
        			break;
     		}   		
     	
      		case Enum.TYPE_FLOORS: {
     			mValue = info.floorsClimbed * 1.0;
     			mGoal = info.floorsClimbedGoal * 1.0;
-    			if ( mGoal == null || mGoal == 10) {
-    				mPercent = 1;
-    			} else {
-    				mPercent = ( mValue / mGoal );
-    				if (mPercent > 1) {
-    					mPercent = 1;
-    				}
-    			}
+    			mPercent = calculatePercentage(mValue, mGoal);
     			mString = "+" + mValue.format("%d");
     			break;
     		}   		
 
      		case Enum.TYPE_CALORIES: {
     			mValue = info.calories;
+    			mGoal = 2500;
+    			mPercent = calculatePercentage(mValue, mGoal);
+    			mString = mValue.format("%d") + " kCal";
     			break;
     		}   		
     	
      		case Enum.TYPE_ACTIVE_MINUTES: {
-    			mValue = info.activeMinutesWeek;
+    			mValue = info.activeMinutesWeek.total;
+    			mGoal = info.activeMinutesWeekGoal;
+    			mPercent = calculatePercentage(mValue, mGoal);
+    			mString = mValue.format("%d") + " min";
     			break;
     		}
     		
@@ -167,15 +168,20 @@ class StatVisual {
 		System.println("bar class drawn with value: " + mValue + "/" + mPercent + "/" + width);	
 		
 		//! background bar
-		dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
+		dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_BLACK);
 		dc.fillRectangle(mX, mY, mWidth, mHeight);
 		
-		//! foreground arc
+		//! foreground bar
 		dc.setColor(mColor, Graphics.COLOR_BLACK);
-		dc.fillRectangle(mX, mY, width, mHeight);
+		dc.fillRectangle(mX, mY+1, width, mHeight-1);
+		
+		//! borders
+		dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_BLACK);
+		dc.fillRectangle(mX, mY, mWidth, 1);
 		
 		//! stat values
-		dc.drawText(mX+mWidth/2, mY+mHeight/2, Graphics.FONT_XTINY, mString, Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+		dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
+		dc.drawText(mX+mWidth/2, mY-1+mHeight/2, Graphics.FONT_XTINY, mString, Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 		 
 	}
 

@@ -4,17 +4,39 @@
     <property id="ForegroundColor" type="number">0xFFFFFF</property>
     <property id="UseMilitaryFormat" type="boolean">false</property>
     
-    <property id="StatVis1_x" type="number">80</property>
-    <property id="StatVis1_y" type="number">175</property>
-    <property id="StatVis1_form" type="string">arc</property>
-    <property id="StatVis1_diameter" type="number">30</property>
-    <property id="StatVis1_color" type="number">0xFF0000</property>
+    <property id="StatVis1_x" type="number">2</property>
+    <property id="StatVis1_y" type="number">140</property>
+    <property id="StatVis1_form" type="string">bar</property>
+    <property id="StatVis1_width" type="number">236</property>
+    <property id="StatVis1_height" type="number">20</property>
+    <property id="StatVis1_color" type="number">0x00FFFF</property>
     
-    <property id="StatVis2_x" type="number">0</property>
-    <property id="StatVis2_y" type="number">110</property>
+    <property id="StatVis2_x" type="number">7</property>
+    <property id="StatVis2_y" type="number">160</property>
     <property id="StatVis2_form" type="string">bar</property>
-    <property id="StatVis2_width" type="number">240</property>
+    <property id="StatVis2_width" type="number">226</property>
     <property id="StatVis2_height" type="number">20</property>
-    <property id="StatVis2_color" type="number">0x00FF00</property>
+    <property id="StatVis2_color" type="number">0x5555FF</property>
+
+    <property id="StatVis3_x" type="number">16</property>
+    <property id="StatVis3_y" type="number">180</property>
+    <property id="StatVis3_form" type="string">bar</property>
+    <property id="StatVis3_width" type="number">208</property>
+    <property id="StatVis3_height" type="number">20</property>
+    <property id="StatVis3_color" type="number">0xFFAA00</property>
+
+    <property id="StatVis4_x" type="number">30</property>
+    <property id="StatVis4_y" type="number">200</property>
+    <property id="StatVis4_form" type="string">bar</property>
+    <property id="StatVis4_width" type="number">180</property>
+    <property id="StatVis4_height" type="number">20</property>
+    <property id="StatVis4_color" type="number">0x55FF55</property>
+
+    <property id="StatVis5_x" type="number">54</property>
+    <property id="StatVis5_y" type="number">220</property>
+    <property id="StatVis5_form" type="string">bar</property>
+    <property id="StatVis5_width" type="number">132</property>
+    <property id="StatVis5_height" type="number">20</property>
+    <property id="StatVis5_color" type="number">0xFF55AA</property>
 
 </properties>
